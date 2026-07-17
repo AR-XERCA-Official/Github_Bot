@@ -473,9 +473,9 @@ async def global_message_handler(update: Update, context: ContextTypes.DEFAULT_T
 # ==========================================
 # 🌐 خادم الويب (Flask Server) لمتطلبات الاستضافة
 # ==========================================
-web_app = Flask(__name__)
+app = Flask(__name__)
 
-@web_app.route('/')
+@app.route('/')
 def home():
     # صفحة هبوط بسيطة تؤكد للاستضافة أن خادم الويب يعمل بصحة جيدة
     return "🚀 Bot Server is Active and Running!", 200
@@ -483,7 +483,8 @@ def home():
 def run_flask():
     # منفذ البورت لربطه بالاستضافة، الافتراضي هو 8080
     port = int(os.environ.get("PORT", 8080))
-    web_app.run(host="0.0.0.0", port=port)
+    app.run(host="0.0.0.0", port=port)
+
 
 # ==========================================
 # 🚀 نقطة التشغيل الرئيسية (Main)
